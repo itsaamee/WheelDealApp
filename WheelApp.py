@@ -14,13 +14,13 @@ class HomePage(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        if text == "Custom Bikes":
+        if text == "Custom":
             app.root.current = "custom_bikes"
-        elif text == "Pre-Built Bikes":
+        elif text == "Pre-Built":
             app.root.current = "pre_built_bikes"
-        elif text == "Bike Lessons":
+        elif text == "Lessons":
             app.root.current = "bike_lessons"
-        elif text == "My Cart":
+        elif text == "Cart":
             app.root.current = "cart"
 
     def go_to_welcome_page(self):
@@ -37,13 +37,13 @@ class RegisterPage(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        if text == "Custom Bikes":
+        if text == "Custom":
             app.root.current = "custom_bikes"
-        elif text == "Pre-Built Bikes":
+        elif text == "Pre-Built":
             app.root.current = "pre_built_bikes"
-        elif text == "Bike Lessons":
+        elif text == "Lessons":
             app.root.current = "bike_lessons"
-        elif text == "My Cart":
+        elif text == "Cart":
             app.root.current = "cart"
 
     def go_to_register_page(self):
@@ -61,13 +61,13 @@ class WelcomePage(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        if text == "Custom Bikes":
+        if text == "Custom":
             app.root.current = "custom_bikes"
-        elif text == "Pre-Built Bikes":
+        elif text == "Pre-Built":
             app.root.current = "pre_built_bikes"
-        elif text == "Bike Lessons":
+        elif text == "Lessons":
             app.root.current = "bike_lessons"
-        elif text == "My Cart":
+        elif text == "Cart":
             app.root.current = "cart"
 
     def go_to_custom_bikes(self):
@@ -90,13 +90,13 @@ class CustomBikes(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        if text == "Custom Bikes":
+        if text == "Custom":
             app.root.current = "custom_bikes"
-        elif text == "Pre-Built Bikes":
+        elif text == "Pre-Built":
             app.root.current = "pre_built_bikes"
-        elif text == "Bike Lessons":
+        elif text == "Lessons":
             app.root.current = "bike_lessons"
-        elif text == "My Cart":
+        elif text == "Cart":
             app.root.current = "cart"
 
     def go_back(self):
@@ -109,13 +109,13 @@ class PreBuiltBikes(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        if text == "Custom Bikes":
+        if text == "Custom":
             app.root.current = "custom_bikes"
-        elif text == "Pre-Built Bikes":
+        elif text == "Pre-Built":
             app.root.current = "pre_built_bikes"
-        elif text == "Bike Lessons":
+        elif text == "Lessons":
             app.root.current = "bike_lessons"
-        elif text == "My Cart":
+        elif text == "Cart":
             app.root.current = "cart"
 
     def go_back(self):
@@ -128,13 +128,13 @@ class BikeLessons(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        if text == "Custom Bikes":
+        if text == "Custom":
             app.root.current = "custom_bikes"
-        elif text == "Pre-Built Bikes":
+        elif text == "Pre-Built":
             app.root.current = "pre_built_bikes"
-        elif text == "Bike Lessons":
+        elif text == "Lessons":
             app.root.current = "bike_lessons"
-        elif text == "My Cart":
+        elif text == "Cart":
             app.root.current = "cart"
 
     def go_back(self):
@@ -146,13 +146,13 @@ class ShoppingCart(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        if text == "Custom Bikes":
+        if text == "Custom":
             app.root.current = "custom_bikes"
-        elif text == "Pre-Built Bikes":
+        elif text == "Pre-Built":
             app.root.current = "pre_built_bikes"
-        elif text == "Bike Lessons":
+        elif text == "Lessons":
             app.root.current = "bike_lessons"
-        elif text == "My Cart":
+        elif text == "Cart":
             app.root.current = "cart"
 
 

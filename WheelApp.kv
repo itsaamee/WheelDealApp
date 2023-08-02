@@ -5,11 +5,11 @@
 
 <PageSpinner@Spinner>:
     size_hint: None, None
-    size: dp(60), dp(60)
+    size: dp(85), dp(80)
     pos_hint: {'top': 1, 'right': 1}
     background_normal: 'page_spinner_overlay_pic.png'
-    values: ['Custom Bikes', 'Pre-Built Bikes', 'Bike Lessons', 'My Cart']
-    on_text: root.parent.switch_to_page(self.text)
+    values: ['Custom', 'Pre-Built', 'Lessons', 'Cart']
+    on_text: root.parent.switch_to_page(self.text)  
 
 <HomePage>:
     orientation: 'vertical'
@@ -142,20 +142,20 @@
     BoxLayout:
         orientation: 'vertical'
 
-        Label:
-            text: "Welcome to WheelDeal!"
-            font_size: 45
-            bold: True
-            italic: True
-            size_hint: (1, 0.2)
-            pos_hint: {'x': 0, 'top': 0.8}
+        Image:
+            source: 'mountain_bike_pic.png' 
+            size_hint: (1, None)
+            allow_stretch: False  
+            keep_ratio: True  
+            height: self.parent.width * 0.7
 
         Label:
-            text: "Please make a selection below"
+            text: "Where would you like to start?"
             font_size: 35
             italic: True
-            size_hint: (1, 0.1)
-            pos_hint: {'x': 0, 'top': 0.7}
+            size_hint: (1, 0.2)
+            pos_hint: {'x': 0, 'top': 0.9}
+            
 
         BoxLayout: 
             orientation: "vertical"
@@ -381,29 +381,7 @@
                 text: "Merch placeholder"
                 size_hint_y: None
 
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
             
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
     Button:
         text: "Back"
         font_size: 25
@@ -457,7 +435,17 @@
     PageSpinner:
 
     BoxLayout:
+        orientation: 'vertical'
+
+        Image:
+            source: 'mountain_bike_pic.png' 
+            size_hint: (1, None)
+            allow_stretch: False  
+            keep_ratio: True  
+            height: self.parent.width * 0.7
+        
         Label: 
             text: "Shopping Cart"
+
 
         
