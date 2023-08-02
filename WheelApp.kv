@@ -1,0 +1,463 @@
+#:import utils kivy.utils
+
+<Button>
+    font_size: 32
+
+<PageSpinner@Spinner>:
+    size_hint: None, None
+    size: dp(150), dp(30)
+    pos_hint: {'top': 1, 'right': 1}
+    text: "Menu"
+    values: ['Custom Bikes', 'Pre-Built Bikes', 'Bike Lessons', 'My Cart']
+    on_text: root.parent.switch_to_page(self.text)
+
+<HomePage>:
+    orientation: 'vertical'
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+
+    PageSpinner:
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 5, 0
+        Label: 
+            text: "The WheelDeal"
+            font_size: 80
+            bold: True
+            color: 'black'
+            font_name: "Roboto"
+            halign: 'center' 
+            valign: 'middle'
+            size_hint_y: None
+            height: self.texture_size[1] * 2
+
+        Label: 
+            text: "We Match You To Your Perfect Bike"
+            font_size: 35
+            color: 'black'
+            font_name: "Roboto"
+            halign: 'center'
+            valign: 'middle'
+            size_hint_y: None
+            height: self.texture_size[1]
+
+        Image:
+            source: 'mountain_bike_pic.png' 
+            size_hint: (1, None)
+            allow_stretch: False  
+            keep_ratio: True  
+            height: self.parent.width * 0.7
+
+        GridLayout:
+            height: self.minimum_height
+            cols: 3
+            rows: 3
+
+            Label:
+                text: '   Sign in or Create\n        an Account'
+                font_size: 32
+                color: 'black'
+                font_name: 'Roboto'
+                col: 0
+                row: 0
+
+            Label: 
+                text: ""
+                col: 1
+                row: 0
+
+            BoxLayout:
+                orientation: "vertical"
+                TextInput:
+                    hint_text: "Username"
+                    multiline: False
+                    font_size: 24
+                TextInput:
+                    hint_text: "Password"
+                    multiline: False
+                    password: True
+                    font_size: 24
+                
+            Button:
+                text: "Register\n  Here!"
+                col: 0
+                row: 1
+                on_press: root.go_to_register_page()
+
+            Label:
+                text:""
+                col: 1
+                row: 1
+
+            Button:
+                text: "Submit"
+                col: 2
+                row: 1
+                on_press: root.go_to_welcome_page()
+            
+            Label: 
+                text: "Talk to Us\n000-000-0000\ninfo@wheeldeal.com"
+                color: "black"     
+
+<RegisterPage>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+
+    PageSpinner:
+        
+    BoxLayout:
+        orientation: "vertical"
+        
+        Label:
+            text: "Registration Page"
+            font_size: 32
+
+        Button:
+            text: "Back"
+            font_size: 25
+            size_hint_y: None
+            pos_hint: {'x': 0, 'top': 0.1}
+            on_release: root.go_back()
+
+
+<WelcomePage>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+
+    PageSpinner:
+
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: "Welcome to WheelDeal!"
+            font_size: 45
+            bold: True
+            italic: True
+            size_hint: (1, 0.2)
+            pos_hint: {'x': 0, 'top': 0.8}
+
+        Label:
+            text: "Please make a selection below"
+            font_size: 35
+            italic: True
+            size_hint: (1, 0.1)
+            pos_hint: {'x': 0, 'top': 0.7}
+
+        BoxLayout: 
+            orientation: "vertical"
+            spacing: 8
+        
+            Button:
+                text: "Custom Bikes"
+                italic: True
+                background_normal: ''
+                background_color: '#786E43'
+                size_hint: (1, 0.3)
+                pos_hint: {'x': 0, 'top': 0.6}
+                on_press: root.go_to_custom_bikes()
+
+            Button:
+                text: "Pre-Built Bikes"
+                italic: True
+                background_normal: ''
+                background_color: '#786E43'
+                size_hint: (1, 0.3)
+                pos_hint: {'x': 0, 'top': 0.4}
+                on_press: root.go_to_pre_built_bikes()
+
+            Button:
+                text: "Bike Lessons"
+                italic: True
+                background_normal: ''
+                background_color: '#786E43'
+                size_hint: (1, 0.3)
+                pos_hint: {'x': 0, 'top': 0.2}
+                on_press: root.go_to_bike_lessons()
+
+<CustomBikes>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+
+    PageSpinner:
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
+        
+        GridLayout:
+            cols: 2
+            spacing: '5dp'
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: "Custom page"
+                font_size: 40
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+            
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+            
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+    Button:
+        text: "Back"
+        font_size: 25
+        size_hint_y: None
+        pos_hint: {'x': 0, 'top': 0.1}
+        on_release: root.go_back()
+            
+
+<PreBuiltBikes>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+
+    PageSpinner:
+
+    BoxLayout:
+        orientation: 'vertical'
+        size_hint_y: None
+        height: self.minimum_height
+
+        GridLayout:
+            cols: 1
+            spacing: '5dp'
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: "Pre Built Bike page"
+                font_size: 40
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+            
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+            
+            Label: 
+                text: "Merch placeholder"
+                size_hint_y: None
+    Button:
+        text: "Back"
+        font_size: 25
+        size_hint_y: None
+        pos_hint: {'x': 0, 'top': 0.1}
+        on_release: root.go_back()
+
+
+
+<BikeLessons>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+    PageSpinner:
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: "Lesson Page"
+            size_hint: (1, 0.1)
+            pos_hint: {'x': 0, 'top': 0.9}
+            font_size: 30
+
+        Label:
+            text: 'Here at WheelDeal, we offer lessons for learning to ride \nyour new bike.  All lessons are held daily at 10:00 AM.  \nMake a date selection below to purchase a lesson'
+            font_size: 30
+            size_hint: (1, 0.4)
+            pos_hint: {'x': 0, 'top': 0.4}
+
+        Label: 
+            text: "DatePicker\nPlaceholder"
+            font_size: 32
+
+        Button:
+            text: "Back"
+            font_size: 25
+            size_hint_y: None
+            pos_hint: {'x': 0, 'top': 0.1}
+            on_release: root.go_back()
+
+<ShoppingCart>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+    PageSpinner:
+
+    BoxLayout:
+        Label: 
+            text: "Shopping Cart"
+
+        
