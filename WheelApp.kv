@@ -5,9 +5,9 @@
 
 <PageSpinner@Spinner>:
     size_hint: None, None
-    size: dp(150), dp(30)
+    size: dp(60), dp(60)
     pos_hint: {'top': 1, 'right': 1}
-    text: "Menu"
+    background_normal: 'page_spinner_overlay_pic.png'
     values: ['Custom Bikes', 'Pre-Built Bikes', 'Bike Lessons', 'My Cart']
     on_text: root.parent.switch_to_page(self.text)
 
