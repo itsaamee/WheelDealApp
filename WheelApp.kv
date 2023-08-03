@@ -1,7 +1,15 @@
 #:import utils kivy.utils
 
-<Button>
-    font_size: 32
+<RoundedButton@Button>
+    background_color: (0, 0, 0, 0)
+    background_normal: ""
+    canvas.before: 
+        Color: 
+            rgba: (.47, .43, .26, 1)
+        RoundedRectangle: 
+            size: self.size
+            pos: self.pos
+            radius: [58]
 
 <PageSpinner@Spinner>:
     size_hint: None, None
@@ -57,6 +65,8 @@
             height: self.minimum_height
             cols: 3
             rows: 3
+            padding: 10
+            spacing: 10
 
             Label:
                 text: '   Sign in or Create\n        an Account'
@@ -83,7 +93,7 @@
                     password: True
                     font_size: 24
                 
-            Button:
+            RoundedButton:
                 text: "Register\n  Here!"
                 col: 0
                 row: 1
@@ -94,7 +104,7 @@
                 col: 1
                 row: 1
 
-            Button:
+            RoundedButton:
                 text: "Submit"
                 col: 2
                 row: 1
@@ -116,12 +126,14 @@
         
     BoxLayout:
         orientation: "vertical"
+        padding: 10
+        spacing: 10
         
         Label:
             text: "Registration Page"
             font_size: 32
 
-        Button:
+        RoundedButton:
             text: "Back"
             font_size: 25
             size_hint_y: None
@@ -141,6 +153,8 @@
 
     BoxLayout:
         orientation: 'vertical'
+        padding: 20
+        spacing: 10
 
         Image:
             source: 'mountain_bike_pic.png' 
@@ -151,7 +165,9 @@
 
         Label:
             text: "Where would you like to start?"
-            font_size: 35
+            color: "black"
+            bold: True
+            font_size: 48
             italic: True
             size_hint: (1, 0.2)
             pos_hint: {'x': 0, 'top': 0.9}
@@ -161,29 +177,26 @@
             orientation: "vertical"
             spacing: 8
         
-            Button:
+            RoundedButton:
                 text: "Custom Bikes"
+                font_size: 38
                 italic: True
-                background_normal: ''
-                background_color: '#786E43'
                 size_hint: (1, 0.3)
                 pos_hint: {'x': 0, 'top': 0.6}
                 on_press: root.go_to_custom_bikes()
 
-            Button:
+            RoundedButton:
                 text: "Pre-Built Bikes"
+                font_size: 38
                 italic: True
-                background_normal: ''
-                background_color: '#786E43'
                 size_hint: (1, 0.3)
                 pos_hint: {'x': 0, 'top': 0.4}
                 on_press: root.go_to_pre_built_bikes()
 
-            Button:
+            RoundedButton:
                 text: "Bike Lessons"
+                font_size: 38   
                 italic: True
-                background_normal: ''
-                background_color: '#786E43'
                 size_hint: (1, 0.3)
                 pos_hint: {'x': 0, 'top': 0.2}
                 on_press: root.go_to_bike_lessons()
@@ -202,6 +215,8 @@
         orientation: 'vertical'
         size_hint_y: None
         height: self.minimum_height
+        padding: 10
+        spacing: 10
         
         GridLayout:
             cols: 2
@@ -294,7 +309,7 @@
                 text: "Merch placeholder"
                 size_hint_y: None
 
-    Button:
+    RoundedButton:
         text: "Back"
         font_size: 25
         size_hint_y: None
@@ -316,6 +331,8 @@
         orientation: 'vertical'
         size_hint_y: None
         height: self.minimum_height
+        padding: 10
+        spacing: 10
 
         GridLayout:
             cols: 1
@@ -382,7 +399,7 @@
                 size_hint_y: None
 
             
-    Button:
+    RoundedButton:
         text: "Back"
         font_size: 25
         size_hint_y: None
@@ -402,6 +419,9 @@
 
     BoxLayout:
         orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        
         Label:
             text: "Lesson Page"
             size_hint: (1, 0.1)
@@ -418,7 +438,7 @@
             text: "DatePicker\nPlaceholder"
             font_size: 32
 
-        Button:
+        RoundedButton:
             text: "Back"
             font_size: 25
             size_hint_y: None
@@ -436,6 +456,8 @@
 
     BoxLayout:
         orientation: 'vertical'
+        padding: 10
+        spacing: 10
 
         Image:
             source: 'mountain_bike_pic.png' 
