@@ -12,7 +12,7 @@ Window.size = (500, 700)
 class ParentScreen(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration = 0.2)
         if text == "Start":
             app.root.current = "welcome"
         elif text == "Types":
@@ -28,7 +28,7 @@ class ParentScreen(Screen):
     
     def go_back(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='right')
+        app.root.transition = SlideTransition(direction='right', duration= 0.25)
         app.root.current = 'home'
 
 
@@ -36,61 +36,61 @@ class HomePage(ParentScreen):
 
     def go_to_welcome_page(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'welcome'
 
     def go_to_register_page(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'register'
 
 class RegisterPage(ParentScreen):
 
     def go_to_register_page(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'register'
 
 class WelcomePage(ParentScreen):
 
     def go_to_bike_types(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'bike_types'
 
     def go_to_bike_lessons(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'bike_lessons'
 
 class CustomBikes(ParentScreen):
     def go_to_bike_types(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'bike_types'
 
 class BikeTypes(ParentScreen):
     def go_to_bike_size(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'bike_size'
 
 class BikeSize(ParentScreen):
     def go_to_bike_tires(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'bike_tires'
 
 class Tires(ParentScreen):
     def go_to_options(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'options'
 
 class BikeOptions(ParentScreen):
     def go_to_cart(self):
         app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'cart'
 
 
