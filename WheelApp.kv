@@ -16,7 +16,7 @@
     size: dp(85), dp(80)
     pos_hint: {'top': 1, 'right': 1}
     background_normal: 'page_spinner_overlay_pic.png'
-    values: ['Custom', 'Pre-Built', 'Lessons', 'Cart']
+    values: ['Start', 'Types', 'Size', 'Tires', 'Lessons', 'Cart']
     on_text: root.parent.switch_to_page(self.text)  
 
 <HomePage>:
@@ -178,20 +178,12 @@
             spacing: 8
         
             RoundedButton:
-                text: "Custom Bikes"
+                text: "Choose a Bike"
                 font_size: 38
                 italic: True
                 size_hint: (1, 0.3)
                 pos_hint: {'x': 0, 'top': 0.6}
-                on_press: root.go_to_custom_bikes()
-
-            RoundedButton:
-                text: "Pre-Built Bikes"
-                font_size: 38
-                italic: True
-                size_hint: (1, 0.3)
-                pos_hint: {'x': 0, 'top': 0.4}
-                on_press: root.go_to_pre_built_bikes()
+                on_press: root.go_to_bike_types()
 
             RoundedButton:
                 text: "Bike Lessons"
@@ -201,7 +193,7 @@
                 pos_hint: {'x': 0, 'top': 0.2}
                 on_press: root.go_to_bike_lessons()
 
-<CustomBikes>:
+<BikeTypes>:
     canvas.before:
         Color: 
             rgba: (.80, .87, .82, 1)
@@ -213,111 +205,113 @@
 
     BoxLayout:
         orientation: 'vertical'
-        size_hint_y: None
-        height: self.minimum_height
         padding: 10
         spacing: 10
+    
+
+        Label:
+            text: "What type of bike\nare you looking for?"
+            font_size: 50
+            color: 'black'
+            bold: True
+
+        RoundedButton:
+            text: 'Mountain'
+            font_size: 35
+            on_press: root.go_to_bike_size()
+
+        RoundedButton:
+            text: 'Beach'
+            font_size: 35
+            on_press: root.go_to_bike_size()
+
+        RoundedButton: 
+            text: 'BMX'
+            font_size: 35
+            on_press: root.go_to_bike_size()
+
+        RoundedButton: 
+            text: 'Road'
+            font_size: 35
+            on_press: root.go_to_bike_size()
+
+        RoundedButton: 
+            text: 'Cruiser'
+            font_size: 35
+            on_press: root.go_to_bike_size()
+
+
+<BikeSize>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+
+    PageSpinner:
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+    
+        Label:
+            padding: (0, 110, 0, 0)
+            text: "What size are you looking for?"
+            font_size: 45
+            color: 'black'
+            bold: True
+            halign: 'center'
+            valign: 'middle'
+
+        Label:
+            text: "Use the size chart below to help you pick"
+            font_size: 40
+            color: 'black'
+            bold: False
+            halign: 'center'
+            valign: 'middle'
         
-        GridLayout:
-            cols: 2
-            spacing: '5dp'
-            size_hint_y: None
-            height: self.minimum_height
+        Label:
+            text: "Your height = Frame size in inches = Bike Size"
+            font_size: 34
+            color: 'black'
+            bold: False
+            halign: 'center'
+            valign: 'middle'
 
-            Label:
-                text: "Custom page"
-                font_size: 40
-                size_hint_y: None
+        RoundedButton:
+            text: '4’11″–5’3″ = 13–15 inches = X-Small'
+            font_size: 35
+            on_press: root.go_to_bike_tires()
 
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
+        RoundedButton:
+            text: '5’3″–5’7″ = 15–16 inches = Small'
+            font_size: 35
+            on_press: root.go_to_bike_tires()
 
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
+        RoundedButton: 
+            text: '5’7″–5’11” = 16–17 inches = Medium'
+            font_size: 35
+            on_press: root.go_to_bike_tires()
 
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
+        RoundedButton: 
+            text: '6’0″–6’2″ = 17–19 inches = Large'
+            font_size: 35
+            on_press: root.go_to_bike_tires()
 
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
+        RoundedButton: 
+            text: '6’2″–6’4″ = 19–21 inches = X-Large'
+            font_size: 35
+            on_press: root.go_to_bike_tires()
+        
+        RoundedButton: 
+            text: '6’4″ and taller = 21+ inches = XX-Large'
+            font_size: 35
+            on_press: root.go_to_bike_tires()
 
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-            
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-            
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-    RoundedButton:
-        text: "Back"
-        font_size: 25
-        size_hint_y: None
-        pos_hint: {'x': 0, 'top': 0.1}
-        on_release: root.go_back()
-            
-
-<PreBuiltBikes>:
+<Tires>:
     canvas.before:
         Color: 
             rgba: (.80, .87, .82, 1)
@@ -329,84 +323,72 @@
 
     BoxLayout:
         orientation: 'vertical'
-        size_hint_y: None
-        height: self.minimum_height
         padding: 10
         spacing: 10
 
+        Label: 
+            padding: (0, 50, 0, 0)
+            text: "Choose your tires"
+            font_size: 45
+            color: 'black'
+            bold: True
+            halign: 'center'
+            valign: 'middle'
+
+        RoundedButton:
+            text: 'Cross-Country'
+            font_size: 35
+            on_press: root.go_to_options()
+
+        RoundedButton:
+            text: 'Downcountry'
+            font_size: 35
+            on_press: root.go_to_options()
+
+        RoundedButton: 
+            text: 'Trail'
+            font_size: 35
+            on_press: root.go_to_options()
+
+        RoundedButton: 
+            text: 'All-Mountain'
+            font_size: 35
+            on_press: root.go_to_options()
+
+        RoundedButton: 
+            text: 'Enduro'
+            font_size: 35
+            on_press: root.go_to_options()
+
+<BikeOptions>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+
+    PageSpinner:
+
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+
+        Label: 
+            padding: (0, 100, 0, 0)
+            text: "Based on your selections\nHere are the bikes available"
+            font_size: 45
+            color: 'black'
+            bold: True
+            halign: 'center'
+            valign: 'middle'
+
         GridLayout:
-            cols: 1
-            spacing: '5dp'
-            size_hint_y: None
+            padding: 10
             height: self.minimum_height
-
-            Label:
-                text: "Pre Built Bike page"
-                font_size: 40
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-            
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            Label: 
-                text: "Merch placeholder"
-                size_hint_y: None
-
-            
-    RoundedButton:
-        text: "Back"
-        font_size: 25
-        size_hint_y: None
-        pos_hint: {'x': 0, 'top': 0.1}
-        on_release: root.go_back()
-
-
+            cols: 2
+            rows: 2
 
 <BikeLessons>:
     canvas.before:

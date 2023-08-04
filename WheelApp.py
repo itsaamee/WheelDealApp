@@ -13,10 +13,14 @@ class ParentScreen(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        if text == "Custom":
-            app.root.current = "custom_bikes"
-        elif text == "Pre-Built":
-            app.root.current = "pre_built_bikes"
+        if text == "Start":
+            app.root.current = "welcome"
+        elif text == "Types":
+            app.root.current = "bike_types"
+        elif text == "Size":
+            app.root.current = "bike_size"
+        elif text == "Tires":
+            app.root.current = "bike_tires"
         elif text == "Lessons":
             app.root.current = "bike_lessons"
         elif text == "Cart":
@@ -49,24 +53,46 @@ class RegisterPage(ParentScreen):
 
 class WelcomePage(ParentScreen):
 
-    def go_to_custom_bikes(self):
+    def go_to_bike_types(self):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
-        app.root.current = 'custom_bikes'
-
-    def go_to_pre_built_bikes(self):
-        app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left')
-        app.root.current = 'pre_built_bikes'
+        app.root.current = 'bike_types'
 
     def go_to_bike_lessons(self):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left')
         app.root.current = 'bike_lessons'
 
-
 class CustomBikes(ParentScreen):
-    pass
+    def go_to_bike_types(self):
+        app = App.get_running_app()
+        app.root.transition = SlideTransition(direction='left')
+        app.root.current = 'bike_types'
+
+class BikeTypes(ParentScreen):
+    def go_to_bike_size(self):
+        app = App.get_running_app()
+        app.root.transition = SlideTransition(direction='left')
+        app.root.current = 'bike_size'
+
+class BikeSize(ParentScreen):
+    def go_to_bike_tires(self):
+        app = App.get_running_app()
+        app.root.transition = SlideTransition(direction='left')
+        app.root.current = 'bike_tires'
+
+class Tires(ParentScreen):
+    def go_to_options(self):
+        app = App.get_running_app()
+        app.root.transition = SlideTransition(direction='left')
+        app.root.current = 'options'
+
+class BikeOptions(ParentScreen):
+    def go_to_cart(self):
+        app = App.get_running_app()
+        app.root.transition = SlideTransition(direction='left')
+        app.root.current = 'cart'
+
 
 class PreBuiltBikes(ParentScreen):
     pass
@@ -84,8 +110,10 @@ class MyApp(App):
         sm.add_widget(HomePage(name = "home"))
         sm.add_widget(RegisterPage(name = 'register'))
         sm.add_widget(WelcomePage(name='welcome'))
-        sm.add_widget(CustomBikes(name='custom_bikes'))
-        sm.add_widget(PreBuiltBikes(name='pre_built_bikes'))
+        sm.add_widget(BikeTypes(name='bike_types'))
+        sm.add_widget(BikeSize(name='bike_size'))
+        sm.add_widget(Tires(name='bike_tires'))
+        sm.add_widget(BikeOptions(name = 'options'))
         sm.add_widget(BikeLessons(name='bike_lessons'))
         sm.add_widget(ShoppingCart(name= "cart"))
 
