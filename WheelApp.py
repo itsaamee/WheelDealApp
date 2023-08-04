@@ -68,10 +68,8 @@ class WelcomePage(ParentScreen):
 class CustomBikes(ParentScreen):
     pass
 
-
 class PreBuiltBikes(ParentScreen):
     pass
-
 
 class BikeLessons(ParentScreen):
     pass
