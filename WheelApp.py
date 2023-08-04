@@ -113,7 +113,7 @@ class MyApp(App):
         sm.add_widget(BikeTypes(name='bike_types'))
         sm.add_widget(BikeSize(name='bike_size'))
         sm.add_widget(Tires(name='bike_tires'))
-        sm.add_widget(BikeOptions(name = 'options'))
+        sm.add_widget(BikeOptions(name = 'options')) 
         sm.add_widget(BikeLessons(name='bike_lessons'))
         sm.add_widget(ShoppingCart(name= "cart"))
 
