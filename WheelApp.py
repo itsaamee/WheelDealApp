@@ -50,6 +50,11 @@ class RegisterPage(ParentScreen):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'register'
+    
+    def go_to_welcome_page(self):
+        app = App.get_running_app()
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
+        app.root.current = 'welcome'
 
 class WelcomePage(ParentScreen):
 

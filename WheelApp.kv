@@ -32,9 +32,9 @@
 
     BoxLayout:
         orientation: 'vertical'
-        padding: 5, 0
         Label: 
             text: "The WheelDeal"
+            padding: (0, 0, 50, 0)
             font_size: 80
             bold: True
             color: 'black'
@@ -42,11 +42,11 @@
             halign: 'center' 
             valign: 'middle'
             size_hint_y: None
-            height: self.texture_size[1] * 2
+            height: self.texture_size[1] * 1.5
 
         Label: 
             text: "We Match You To Your Perfect Bike"
-            font_size: 35
+            font_size: 40
             color: 'black'
             font_name: "Roboto"
             halign: 'center'
@@ -63,11 +63,10 @@
             height: self.parent.width * 0.7
 
         GridLayout:
-            height: self.minimum_height
-            cols: 3
-            rows: 3
-            padding: 10
-            spacing: 10
+            # height: self.minimum_height
+            cols: 2
+            padding: 25
+            spacing: 25
 
             Label:
                 text: '   Sign in or Create\n        an Account'
@@ -75,12 +74,6 @@
                 color: 'black'
                 font_name: 'Roboto'
                 col: 0
-                row: 0
-
-            Label: 
-                text: ""
-                col: 1
-                row: 0
 
             BoxLayout:
                 orientation: "vertical"
@@ -97,18 +90,11 @@
             RoundedButton:
                 text: "Register\n  Here!"
                 col: 0
-                row: 1
                 on_press: root.go_to_register_page()
-
-            Label:
-                text:""
-                col: 1
-                row: 1
 
             RoundedButton:
                 text: "Submit"
-                col: 2
-                row: 1
+                col: 1
                 on_press: root.go_to_welcome_page()
             
             Label: 
@@ -122,24 +108,236 @@
         Rectangle: 
             pos: self.pos
             size: self.size
-
-    PageSpinner:
         
     BoxLayout:
         orientation: "vertical"
         padding: 10
         spacing: 10
         
-        Label:
-            text: "Registration Page"
-            font_size: 32
+        GridLayout:
+            size: self.width, self.height
+            cols: 1
+            BoxLayout:
+                padding: 3
+                orientation: 'horizontal'
+                Label:
+                    text: 'First Name'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'Last Name'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                padding: 3
+                orientation: 'horizontal'
+                Label:
+                    text: 'Email'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal' 
+                padding: 3   
+                Label:
+                    text: "Shipping Address"
+                    color: 'black'
+                    bold: True
+                    font_size: 25
+                    size_hint_x: 0.3
+                    
+                Label:
+                    text: ""
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                padding: 3
+                orientation: 'horizontal'
+                Label:
+                    text: 'Street'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'House/APT'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'City'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'State'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'Zip Code'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal' 
+                padding: 3   
+                Label:
+                    text: "Billing Address"
+                    color: 'black'
+                    bold: True
+                    font_size: 25
+                    
+                Label:
+                    text: "Same as Shipping"
+                    color: 'black'
+                    bold: True
+                    font_size: 25
+                    
+                CheckBox:
+                    active: False
+                    color: 'black'
+
+            BoxLayout:
+                padding: 3
+                orientation: 'horizontal'
+                Label:
+                    text: 'Street'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'House/APT'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+            
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'City'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'State'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
+
+            BoxLayout:
+                orientation: 'horizontal'
+                padding: 3
+                Label:
+                    text: 'Zip Code'
+                    color: 'black'
+                    font_size: 25
+                    size_hint_x: 0.2
+
+                TextInput:
+                    multiline: False
+                    font_size: 25
+                    size_hint_x: 0.7
 
         RoundedButton:
-            text: "Back"
+            text: "Submit"
             font_size: 25
             size_hint_y: None
             pos_hint: {'x': 0, 'top': 0.1}
-            on_release: root.go_back()
+            on_release: root.go_to_welcome_page()
 
 
 <WelcomePage>:
