@@ -9,6 +9,7 @@ Builder.load_file('WheelApp.kv')
 
 Window.size = (500, 700)
 
+# RTM-002
 class ParentScreen(Screen):
     def switch_to_page(self, text):
         app = App.get_running_app()
@@ -44,6 +45,7 @@ class HomePage(ParentScreen):
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'register'
 
+# RTM-010
 class RegisterPage(ParentScreen):
 
     def go_to_register_page(self):
@@ -68,30 +70,28 @@ class WelcomePage(ParentScreen):
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'bike_lessons'
 
-class CustomBikes(ParentScreen):
-    def go_to_bike_types(self):
-        app = App.get_running_app()
-        app.root.transition = SlideTransition(direction='left', duration= 0.25)
-        app.root.current = 'bike_types'
-
+# RTM-003
 class BikeTypes(ParentScreen):
     def go_to_bike_size(self):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'bike_size'
 
+# RTM-003
 class BikeSize(ParentScreen):
     def go_to_bike_tires(self):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'bike_tires'
 
+# RTM-003
 class Tires(ParentScreen):
     def go_to_options(self):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'options'
 
+# RTM-003
 class BikeOptions(ParentScreen):
     def go_to_cart(self):
         app = App.get_running_app()
@@ -105,6 +105,7 @@ class PreBuiltBikes(ParentScreen):
 class BikeLessons(ParentScreen):
     pass
 
+# RTM-004
 class ShoppingCart(ParentScreen):
     pass
 

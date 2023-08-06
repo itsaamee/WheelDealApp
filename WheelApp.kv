@@ -1,5 +1,6 @@
 #:import utils kivy.utils
 
+# RTM-001 // Lare buttons for easy accessibility throughout layout
 <RoundedButton@Button>
     background_color: (0, 0, 0, 0)
     background_normal: ""
@@ -11,6 +12,7 @@
             pos: self.pos
             radius: [25]
 
+# RTM-002 // Easily navigate and locate products
 <PageSpinner@Spinner>:
     size_hint: None, None
     size: dp(85), dp(80)
@@ -89,11 +91,13 @@
                 
             RoundedButton:
                 text: "Register\n  Here!"
+                font_size: 25
                 col: 0
                 on_press: root.go_to_register_page()
 
             RoundedButton:
                 text: "Submit"
+                font_size: 25
                 col: 1
                 on_press: root.go_to_welcome_page()
             
@@ -101,6 +105,7 @@
                 text: "Talk to Us\n000-000-0000\ninfo@wheeldeal.com"
                 color: "black"     
 
+# RTM-010 // add new user accounts
 <RegisterPage>:
     canvas.before:
         Color: 
@@ -439,7 +444,7 @@
             font_size: 35
             on_press: root.go_to_bike_size()
 
-
+# RTM-003 // bike size
 <BikeSize>:
     canvas.before:
         Color: 
@@ -559,6 +564,7 @@
             font_size: 35
             on_press: root.go_to_options()
 
+# RTM-004 // Options to purchase
 <BikeOptions>:
     canvas.before:
         Color: 
