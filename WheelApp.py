@@ -4,6 +4,11 @@ from kivy.lang import Builder
 import sqlite3
 from kivy.core.window import Window
 from kivy.uix.button import Button
+from kivymd.app import MDApp
+from kivymd.uix.menu import MDDropdownMenu
+from kivymd.uix.button import MDRaisedButton
+from kivymd.uix.navigationdrawer import MDNavigationDrawer
+from kivymd.uix.toolbar import MDTopAppBar
 
 Builder.load_file('WheelApp.kv') 
 
@@ -110,7 +115,7 @@ class ShoppingCart(ParentScreen):
     pass
 
 
-class MyApp(App):
+class MyApp(MDApp):
     def build(self):
         sm = ScreenManager()
         sm.add_widget(HomePage(name = "home"))

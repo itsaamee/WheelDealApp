@@ -1,6 +1,6 @@
 #:import utils kivy.utils
 
-# RTM-001 // Lare buttons for easy accessibility throughout layout
+# RTM-001 // Large buttons for easy accessibility throughout layout
 <RoundedButton@Button>
     background_color: (0, 0, 0, 0)
     background_normal: ""
@@ -65,45 +65,65 @@
             height: self.parent.width * 0.7
 
         GridLayout:
-            # height: self.minimum_height
-            cols: 2
+            size: self.width, self.height
+            cols: 1
             padding: 25
             spacing: 25
 
-            Label:
-                text: '   Sign in or Create\n        an Account'
-                font_size: 32
-                color: 'black'
-                font_name: 'Roboto'
-                col: 0
-
             BoxLayout:
-                orientation: "vertical"
-                TextInput:
-                    hint_text: "Username"
-                    multiline: False
-                    font_size: 24
-                TextInput:
-                    hint_text: "Password"
-                    multiline: False
-                    password: True
-                    font_size: 24
-                
-            RoundedButton:
-                text: "Register\n  Here!"
-                font_size: 25
-                col: 0
-                on_press: root.go_to_register_page()
-
-            RoundedButton:
-                text: "Submit"
-                font_size: 25
-                col: 1
-                on_press: root.go_to_welcome_page()
+                orientation: "horizontal"
+                spacing: 75
             
-            Label: 
-                text: "Talk to Us\n000-000-0000\ninfo@wheeldeal.com"
-                color: "black"     
+                Label:
+                    text: '   Sign in or Create\n        an Account'
+                    font_size: 40
+                    color: 'black'
+                    font_name: 'Roboto'
+                    col: 0
+
+                BoxLayout:
+                    orientation: "vertical"
+                    TextInput:
+                        hint_text: "Username"
+                        multiline: False
+                        font_size: 24
+                    TextInput:
+                        hint_text: "Password"
+                        multiline: False
+                        password: True
+                        font_size: 24
+            
+            BoxLayout:
+                orientation: "horizontal"
+                spacing: 100
+                padding: 50
+            
+                MDRaisedButton:
+                    padding: 50
+                    size_hint_y: 2.5
+                    text: "Register Here"
+                    font_size: 25
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: (.47, .43, .26, 1)
+                    elevation: 3
+                    on_release: root.go_to_register_page()
+
+                MDRaisedButton:
+                    text: "Submit"
+                    size_hint_y: 2.5
+                    size_hint_x: 0.6
+                    font_size: 25
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: (.47, .43, .26, 1)
+                    elevation: 3
+                    on_release: root.go_to_welcome_page()
+        
+            #BoxLayout:
+                #orientation: "horizontal"
+                #Label: 
+                    #text: "Talk to Us\n000-000-0000\ninfo@wheeldeal.com"
+                    #color: "black"     
+                    #pos_hint_x: 1
 
 # RTM-010 // add new user accounts
 <RegisterPage>:
@@ -116,7 +136,7 @@
         
     BoxLayout:
         orientation: "vertical"
-        padding: 10
+        padding: 15
         spacing: 10
         
         GridLayout:
@@ -337,12 +357,15 @@
                     font_size: 25
                     size_hint_x: 0.7
 
-        RoundedButton:
-            text: "Submit"
-            font_size: 25
-            size_hint_y: None
-            pos_hint: {'x': 0, 'top': 0.1}
-            on_release: root.go_to_welcome_page()
+            MDRaisedButton:
+                pos_hint: {'center_x': 0.5}
+                size_hint: (0.7, 2)
+                text: "Submit"
+                font_size: 25
+                text_color: 1, 1, 1, 1
+                md_bg_color: (.47, .43, .26, 1)
+                elevation: 3
+                on_release: root.go_to_welcome_page()
 
 
 <WelcomePage>:
@@ -381,20 +404,24 @@
             orientation: "vertical"
             spacing: 8
         
-            RoundedButton:
+            MDRaisedButton:
                 text: "Choose a Bike"
+                elevation: 4
                 font_size: 38
                 italic: True
+                md_bg_color: (.47, .43, .26, 1)
                 size_hint: (1, 0.3)
-                pos_hint: {'x': 0, 'top': 0.6}
-                on_press: root.go_to_bike_types()
-
-            RoundedButton:
+                pos_hint: {"x": 0 ,"top": 0.6}
+                on_release: root.go_to_bike_types()
+            
+            MDRaisedButton:
                 text: "Bike Lessons"
-                font_size: 38   
+                elevation: 4
+                font_size: 38
                 italic: True
+                md_bg_color: (.47, .43, .26, 1)
                 size_hint: (1, 0.3)
-                pos_hint: {'x': 0, 'top': 0.2}
+                pos_hint: {"x": 0 ,"top": 0.6}
                 on_press: root.go_to_bike_lessons()
 
 <BikeTypes>:
@@ -408,6 +435,7 @@
     PageSpinner:
 
     BoxLayout:
+        size: self.width, self.height
         orientation: 'vertical'
         padding: 10
         spacing: 10
@@ -419,30 +447,46 @@
             color: 'black'
             bold: True
 
-        RoundedButton:
-            text: 'Mountain'
+        MDRaisedButton:
+            size_hint: (1, 0.3)
+            text: "Mountain"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_bike_size()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_size()
 
-        RoundedButton:
-            text: 'Beach'
+        MDRaisedButton:
+            size_hint: (1, 0.3)
+            text: "Beach"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_bike_size()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_size()
 
-        RoundedButton: 
-            text: 'BMX'
+        MDRaisedButton:
+            size_hint: (1, 0.3)
+            text: "BMX"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_bike_size()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_size()
 
-        RoundedButton: 
-            text: 'Road'
+        MDRaisedButton:
+            size_hint: (1, 0.3)
+            text: "Road"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_bike_size()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_size()
 
-        RoundedButton: 
-            text: 'Cruiser'
+        MDRaisedButton:
+            size_hint: (1, 0.3)
+            text: "Cruiser"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_bike_size()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_size()
+
 
 # RTM-003 // bike size
 <BikeSize>:
@@ -456,12 +500,13 @@
     PageSpinner:
 
     BoxLayout:
+        size: self.size
         orientation: 'vertical'
         padding: 10
         spacing: 10
     
         Label:
-            padding: (0, 110, 0, 0)
+            padding: (0, 90, 0, 0)
             text: "What size are you looking for?"
             font_size: 45
             color: 'black'
@@ -469,13 +514,13 @@
             halign: 'center'
             valign: 'middle'
 
-        Label:
-            text: "Use the size chart below to help you pick"
-            font_size: 40
-            color: 'black'
-            bold: False
-            halign: 'center'
-            valign: 'middle'
+        #Label:
+         #   text: "Use the size chart below to help you pick"
+          #  font_size: 40
+           # color: 'black'
+            #bold: False
+            #halign: 'center'
+            #valign: 'middle'
         
         Label:
             text: "Your height = Frame size in inches = Bike Size"
@@ -484,36 +529,54 @@
             bold: False
             halign: 'center'
             valign: 'middle'
-
-        RoundedButton:
-            text: '4’11″–5’3″ = 13–15 inches = X-Small'
-            font_size: 35
-            on_press: root.go_to_bike_tires()
-
-        RoundedButton:
-            text: '5’3″–5’7″ = 15–16 inches = Small'
-            font_size: 35
-            on_press: root.go_to_bike_tires()
-
-        RoundedButton: 
-            text: '5’7″–5’11” = 16–17 inches = Medium'
-            font_size: 35
-            on_press: root.go_to_bike_tires()
-
-        RoundedButton: 
-            text: '6’0″–6’2″ = 17–19 inches = Large'
-            font_size: 35
-            on_press: root.go_to_bike_tires()
-
-        RoundedButton: 
-            text: '6’2″–6’4″ = 19–21 inches = X-Large'
-            font_size: 35
-            on_press: root.go_to_bike_tires()
         
-        RoundedButton: 
-            text: '6’4″ and taller = 21+ inches = XX-Large'
+        MDRaisedButton:
+            size_hint: (1, 0.4)
+            text: "4’11″–5’3″ = 13–15 inches = X-Small"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_bike_tires()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
+
+        MDRaisedButton:
+            size_hint: (1, 0.4)
+            text: "5’3″–5’7″ = 15–16 inches = Small"
+            elevation: 3
+            font_size: 35
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
+
+        MDRaisedButton:
+            size_hint: (1, 0.4)
+            text: "5’7″–5’11” = 16–17 inches = Medium"
+            elevation: 3
+            font_size: 35
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
+
+        MDRaisedButton:
+            size_hint: (1, 0.4)
+            text: "6’0″–6’2″ = 17–19 inches = Large"
+            elevation: 3
+            font_size: 35
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
+
+        MDRaisedButton:
+            size_hint: (1, 0.4)
+            text: "6’2″–6’4″ = 19–21 inches = X-Large"
+            elevation: 3
+            font_size: 35
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
+
+        MDRaisedButton:
+            size_hint: (1, 0.4)
+            text: "6’4″ and taller = 21+ inches = XX-Large"
+            elevation: 3
+            font_size: 35
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
 
 <Tires>:
     canvas.before:
@@ -539,30 +602,45 @@
             halign: 'center'
             valign: 'middle'
 
-        RoundedButton:
-            text: 'Cross-Country'
+        MDRaisedButton:
+            size_hint: (1, 0.5)
+            text: "Cross Country"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_options()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
 
-        RoundedButton:
-            text: 'Downcountry'
+        MDRaisedButton:
+            size_hint: (1, 0.5)
+            text: "Down Country"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_options()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
 
-        RoundedButton: 
-            text: 'Trail'
+        MDRaisedButton:
+            size_hint: (1, 0.5)
+            text: "Trail"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_options()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
 
-        RoundedButton: 
-            text: 'All-Mountain'
+        MDRaisedButton:
+            size_hint: (1, 0.4)
+            text: "All Mountain"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_options()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
 
-        RoundedButton: 
-            text: 'Enduro'
+        MDRaisedButton:
+            size_hint: (1, 0.5)
+            text: "Enduro"
+            elevation: 3
             font_size: 35
-            on_press: root.go_to_options()
+            md_bg_color: (.47, .43, .26, 1)
+            on_release: root.go_to_bike_tires()
 
 # RTM-004 // Options to purchase
 <BikeOptions>:
