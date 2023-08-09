@@ -1,18 +1,7 @@
 #:import utils kivy.utils
 
-# RTM-001 // Large buttons for easy accessibility throughout layout
-<RoundedButton@Button>
-    background_color: (0, 0, 0, 0)
-    background_normal: ""
-    canvas.before: 
-        Color: 
-            rgba: (.47, .43, .26, 1)
-        RoundedRectangle: 
-            size: self.size
-            pos: self.pos
-            radius: [25]
-
 # RTM-002 // Easily navigate and locate products
+        
 <PageSpinner@Spinner>:
     size_hint: None, None
     size: dp(85), dp(80)
@@ -29,12 +18,12 @@
         Rectangle: 
             pos: self.pos
             size: self.size
-
+    
     PageSpinner:
 
-    BoxLayout:
+    MDBoxLayout:
         orientation: 'vertical'
-        Label: 
+        MDLabel: 
             text: "The WheelDeal"
             padding: (0, 0, 50, 0)
             font_size: 80
@@ -46,7 +35,7 @@
             size_hint_y: None
             height: self.texture_size[1] * 1.5
 
-        Label: 
+        MDLabel: 
             text: "We Match You To Your Perfect Bike"
             font_size: 40
             color: 'black'
@@ -70,30 +59,32 @@
             padding: 25
             spacing: 25
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: "horizontal"
                 spacing: 75
             
-                Label:
-                    text: '   Sign in or Create\n        an Account'
-                    font_size: 40
+                MDLabel:
+                    text: '       Sign in or\nCreate an Account'
+                    font_size: 35
                     color: 'black'
                     font_name: 'Roboto'
                     col: 0
 
-                BoxLayout:
+                MDBoxLayout:
                     orientation: "vertical"
-                    TextInput:
+                    MDTextField:
                         hint_text: "Username"
+                        icon_right: "account"
                         multiline: False
                         font_size: 24
-                    TextInput:
+                    MDTextField:
                         hint_text: "Password"
+                        icon_right: "eye-off"
                         multiline: False
                         password: True
                         font_size: 24
             
-            BoxLayout:
+            MDBoxLayout:
                 orientation: "horizontal"
                 spacing: 100
                 padding: 50
@@ -118,9 +109,9 @@
                     elevation: 3
                     on_release: root.go_to_welcome_page()
         
-            #BoxLayout:
+            #MDBoxLayout:
                 #orientation: "horizontal"
-                #Label: 
+                #MDLabel: 
                     #text: "Talk to Us\n000-000-0000\ninfo@wheeldeal.com"
                     #color: "black"     
                     #pos_hint_x: 1
@@ -134,7 +125,7 @@
             pos: self.pos
             size: self.size
         
-    BoxLayout:
+    MDBoxLayout:
         orientation: "vertical"
         padding: 15
         spacing: 10
@@ -142,217 +133,218 @@
         GridLayout:
             size: self.width, self.height
             cols: 1
-            BoxLayout:
+            MDBoxLayout:
                 padding: 3
                 orientation: 'horizontal'
-                Label:
+                MDLabel:
                     text: 'First Name'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'Last Name'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 padding: 3
                 orientation: 'horizontal'
-                Label:
+                MDLabel:
                     text: 'Email'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal' 
                 padding: 3   
-                Label:
+                MDLabel:
                     text: "Shipping Address"
                     color: 'black'
                     bold: True
                     font_size: 25
                     size_hint_x: 0.3
                     
-                Label:
+                MDLabel:
                     text: ""
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 padding: 3
                 orientation: 'horizontal'
-                Label:
+                MDLabel:
                     text: 'Street'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'House/APT'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
             
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'City'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'State'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'Zip Code'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
-                orientation: 'horizontal' 
-                padding: 3   
-                Label:
+            MDBoxLayout:
+                orientation: 'horizontal'    
+                MDLabel:
                     text: "Billing Address"
                     color: 'black'
                     bold: True
                     font_size: 25
                     
-                Label:
+                MDLabel:
                     text: "Same as Shipping"
                     color: 'black'
                     bold: True
                     font_size: 25
                     
-                CheckBox:
+                MDCheckbox:
+                    size_hint: None, None
+                    size: "55dp", "55dp"
                     active: False
                     color: 'black'
 
-            BoxLayout:
+            MDBoxLayout:
                 padding: 3
                 orientation: 'horizontal'
-                Label:
+                MDLabel:
                     text: 'Street'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'House/APT'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
             
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'City'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'State'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
 
-            BoxLayout:
+            MDBoxLayout:
                 orientation: 'horizontal'
                 padding: 3
-                Label:
+                MDLabel:
                     text: 'Zip Code'
                     color: 'black'
                     font_size: 25
                     size_hint_x: 0.2
 
-                TextInput:
+                MDTextField:
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -365,7 +357,88 @@
                 text_color: 1, 1, 1, 1
                 md_bg_color: (.47, .43, .26, 1)
                 elevation: 3
+                on_release: root.go_to_password_page()
+
+<PasswordPage>:
+    canvas.before:
+        Color: 
+            rgba: (.80, .87, .82, 1)
+        Rectangle: 
+            pos: self.pos
+            size: self.size
+    
+    MDCard:
+        orientation: "vertical"
+        size_hint: 0.7, 0.7
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        elevation: 3
+        padding: 25
+        spacing: 25
+        orientation: "vertical"
+
+        MDBoxLayout:
+            MDTextField:
+                hint_text: "Choose Username"
+                icon_right: "account"
+                multiline: False
+                password: True
+                font_size: 24
+                size_hint_x: 0.6
+
+        MDBoxLayout:
+            MDTextField:
+                hint_text: "Choose Password"
+                icon_right: "eye-off"
+                multiline: False
+                font_size: 24
+                size_hint_x: 0.6
+
+        MDBoxLayout:
+            orientation: "horizontal"
+            MDTextField:
+                hint_text: "Confirm Password"
+                multiline: False
+                icon_right: "eye-off"
+                font_size: 25
+                size_hint_x: 0.6
+            
+        MDBoxLayout:
+            orientation: "horizontal"
+            padding: 20
+            spacing: 20
+
+            MDRaisedButton:
+                text: "Submit"
+                size_hint_y: 1
+                size_hint_x: 0.6
+                font_size: 25
+                text_color: 1, 1, 1, 1
+                md_bg_color: (.47, .43, .26, 1)
+                elevation: 3
+                disabled: False
+                on_release: 
+                    root.account_creation_label(),
+                    proceed_button.disabled = False
+                    self.disabled= True
+
+            MDRaisedButton:
+                text: "Proceed"
+                id: proceed_button
+                size_hint_y: 1
+                size_hint_x: 0.6
+                font_size: 25
+                text_color: 1, 1, 1, 1
+                md_bg_color: (.47, .43, .26, 1)
+                elevation: 3
+                disabled: True
                 on_release: root.go_to_welcome_page()
+            
+        MDBoxLayout:
+            MDLabel:
+                id: success_label
+                text: ""
+                font_size: 25
+
 
 
 <WelcomePage>:
@@ -378,7 +451,7 @@
 
     PageSpinner:
 
-    BoxLayout:
+    MDBoxLayout:
         orientation: 'vertical'
         padding: 20
         spacing: 10
@@ -390,8 +463,8 @@
             keep_ratio: True  
             height: self.parent.width * 0.7
 
-        Label:
-            text: "Where would you like to start?"
+        MDLabel:
+            text: "   Where would you like to start?"
             color: "black"
             bold: True
             font_size: 48
@@ -400,7 +473,7 @@
             pos_hint: {'x': 0, 'top': 0.9}
             
 
-        BoxLayout: 
+        MDBoxLayout: 
             orientation: "vertical"
             spacing: 8
         
@@ -434,16 +507,16 @@
 
     PageSpinner:
 
-    BoxLayout:
+    MDBoxLayout:
         size: self.width, self.height
         orientation: 'vertical'
         padding: 10
         spacing: 10
     
 
-        Label:
-            text: "What type of bike\nare you looking for?"
-            font_size: 50
+        MDLabel:
+            text: "  What type of bike are you looking for?"
+            font_size: 40
             color: 'black'
             bold: True
 
@@ -499,13 +572,13 @@
 
     PageSpinner:
 
-    BoxLayout:
+    MDBoxLayout:
         size: self.size
         orientation: 'vertical'
         padding: 10
         spacing: 10
     
-        Label:
+        MDLabel:
             padding: (0, 90, 0, 0)
             text: "What size are you looking for?"
             font_size: 45
@@ -514,7 +587,7 @@
             halign: 'center'
             valign: 'middle'
 
-        #Label:
+        #MDLabel:
          #   text: "Use the size chart below to help you pick"
           #  font_size: 40
            # color: 'black'
@@ -522,7 +595,7 @@
             #halign: 'center'
             #valign: 'middle'
         
-        Label:
+        MDLabel:
             text: "Your height = Frame size in inches = Bike Size"
             font_size: 34
             color: 'black'
@@ -588,12 +661,12 @@
 
     PageSpinner:
 
-    BoxLayout:
+    MDBoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
 
-        Label: 
+        MDLabel: 
             padding: (0, 50, 0, 0)
             text: "Choose your tires"
             font_size: 45
@@ -608,7 +681,7 @@
             elevation: 3
             font_size: 35
             md_bg_color: (.47, .43, .26, 1)
-            on_release: root.go_to_bike_tires()
+            on_release: root.go_to_options()
 
         MDRaisedButton:
             size_hint: (1, 0.5)
@@ -616,7 +689,7 @@
             elevation: 3
             font_size: 35
             md_bg_color: (.47, .43, .26, 1)
-            on_release: root.go_to_bike_tires()
+            on_release: root.go_to_options()
 
         MDRaisedButton:
             size_hint: (1, 0.5)
@@ -624,7 +697,7 @@
             elevation: 3
             font_size: 35
             md_bg_color: (.47, .43, .26, 1)
-            on_release: root.go_to_bike_tires()
+            on_release: root.go_to_options()
 
         MDRaisedButton:
             size_hint: (1, 0.4)
@@ -632,7 +705,7 @@
             elevation: 3
             font_size: 35
             md_bg_color: (.47, .43, .26, 1)
-            on_release: root.go_to_bike_tires()
+            on_release: root.go_to_options()
 
         MDRaisedButton:
             size_hint: (1, 0.5)
@@ -640,7 +713,7 @@
             elevation: 3
             font_size: 35
             md_bg_color: (.47, .43, .26, 1)
-            on_release: root.go_to_bike_tires()
+            on_release: root.go_to_options()
 
 # RTM-004 // Options to purchase
 <BikeOptions>:
@@ -653,12 +726,12 @@
 
     PageSpinner:
 
-    BoxLayout:
+    MDBoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
 
-        Label: 
+        MDLabel: 
             padding: (0, 100, 0, 0)
             text: "Based on your selections\nHere are the bikes available"
             font_size: 45
@@ -680,30 +753,31 @@
         Rectangle: 
             pos: self.pos
             size: self.size
-    PageSpinner:
+    # PageSpinner:
 
-    BoxLayout:
+    MDBoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
         
-        Label:
+        MDLabel:
             text: "Lesson Page"
             size_hint: (1, 0.1)
             pos_hint: {'x': 0, 'top': 0.9}
             font_size: 30
 
-        Label:
+        MDLabel:
             text: 'Here at WheelDeal, we offer lessons for learning to ride \nyour new bike.  All lessons are held daily at 10:00 AM.  \nMake a date selection below to purchase a lesson'
             font_size: 30
             size_hint: (1, 0.4)
             pos_hint: {'x': 0, 'top': 0.4}
 
-        Label: 
+        MDLabel: 
             text: "DatePicker\nPlaceholder"
             font_size: 32
 
-        RoundedButton:
+        MDRaisedButton:
+            elevation: 3
             text: "Back"
             font_size: 25
             size_hint_y: None
@@ -719,7 +793,7 @@
             size: self.size
     PageSpinner:
 
-    BoxLayout:
+    MDBoxLayout:
         orientation: 'vertical'
         padding: 10
         spacing: 10
@@ -731,7 +805,7 @@
             keep_ratio: True  
             height: self.parent.width * 0.7
         
-        Label: 
+        MDLabel: 
             text: "Shopping Cart"
 
 

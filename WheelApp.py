@@ -7,8 +7,7 @@ from kivy.uix.button import Button
 from kivymd.app import MDApp
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.button import MDRaisedButton
-from kivymd.uix.navigationdrawer import MDNavigationDrawer
-from kivymd.uix.toolbar import MDTopAppBar
+
 
 Builder.load_file('WheelApp.kv') 
 
@@ -31,6 +30,7 @@ class ParentScreen(Screen):
             app.root.current = "bike_lessons"
         elif text == "Cart":
             app.root.current = "cart"
+            
     
     def go_back(self):
         app = App.get_running_app()
@@ -53,15 +53,19 @@ class HomePage(ParentScreen):
 # RTM-010
 class RegisterPage(ParentScreen):
 
-    def go_to_register_page(self):
+    def go_to_password_page(self):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
-        app.root.current = 'register'
-    
+        app.root.current = 'password'
+
+class PasswordPage(ParentScreen):
     def go_to_welcome_page(self):
         app = App.get_running_app()
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'welcome'
+    
+    def account_creation_label(self):
+        self.ids.success_label.text = "Account Created Successfully"
 
 class WelcomePage(ParentScreen):
 
@@ -116,10 +120,13 @@ class ShoppingCart(ParentScreen):
 
 
 class MyApp(MDApp):
+    
     def build(self):
+
         sm = ScreenManager()
         sm.add_widget(HomePage(name = "home"))
         sm.add_widget(RegisterPage(name = 'register'))
+        sm.add_widget(PasswordPage(name= "password"))
         sm.add_widget(WelcomePage(name='welcome'))
         sm.add_widget(BikeTypes(name='bike_types'))
         sm.add_widget(BikeSize(name='bike_size'))
