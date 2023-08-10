@@ -50,7 +50,7 @@ class HomePage(ParentScreen):
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'register'
 
-# RTM-010
+# RTM-010, RTM-006
 class RegisterPage(ParentScreen):
 
     def go_to_password_page(self):
