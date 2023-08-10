@@ -73,11 +73,32 @@ class RegisterPage(ParentScreen):
             'house': self.ids.house.text,
             'city': self.ids.city.text,
             'state': self.ids.state.text,
-            'zip': self.ids.zip.text
+            'zip': self.ids.zip.text,
+            'billing_street': self.ids.billing_street.text,
+            'billing_house': self.ids.billing_house.text,
+            'billing_city': self.ids.billing_city.text,
+            'billing_state': self.ids.billing_state.text,
+            'billing_zip': self.ids.billing_zip.text
         }
 
         # add a record to the database
-        cur.execute("INSERT INTO customer_info VALUES (:first_name, :last_name, :email, :street, :house, :city, :state, :zip)", data)
+        cur.execute("""
+            INSERT INTO customer_info VALUES (
+                :first_name, 
+                :last_name, 
+                :email, 
+                :street, 
+                :house, 
+                :city, 
+                :state, 
+                :zip, 
+                :billing_street,
+                :billing_house,
+                :billing_city,
+                :billing_state,
+                :billing_zip
+            )
+            """, data)
 
         conn.commit()
 
@@ -92,6 +113,11 @@ class RegisterPage(ParentScreen):
         self.ids.city.text= ""
         self.ids.state.text= ""
         self.ids.zip.text= ""
+        self.ids.billing_street.text = ""
+        self.ids.billing_house.text= ""
+        self.ids.billing_city.text= ""
+        self.ids.billing_state.text= ""
+        self.ids.billing_zip.text= ""
 
     def same_as_shipping(self):
         self.ids.billing_street.text = self.ids.street.text
@@ -180,7 +206,12 @@ class MyApp(MDApp):
             house_apt text,
             city text,
             state text,
-            zip integer)
+            zip text,
+            billing_street text,
+            billing_house text,
+            billing_city text,
+            billing_state text,
+            billing_zip text)
             """)
         
         conn.commit()
