@@ -143,6 +143,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: first
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -157,6 +158,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: last
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -171,6 +173,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: email
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -199,6 +202,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: street
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -213,6 +217,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: house
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -227,6 +232,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: city
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -241,6 +247,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: state
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -255,6 +262,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: zip
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -278,6 +286,7 @@
                     size: "55dp", "55dp"
                     active: False
                     color: 'black'
+                    on_active: root.same_as_shipping()
 
             MDBoxLayout:
                 padding: 3
@@ -289,6 +298,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: billing_street
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -303,6 +313,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: billing_house
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -317,6 +328,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: billing_city
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -331,6 +343,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: billing_state
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -345,6 +358,7 @@
                     size_hint_x: 0.2
 
                 MDTextField:
+                    id: billing_zip
                     multiline: False
                     font_size: 25
                     size_hint_x: 0.7
@@ -357,7 +371,9 @@
                 text_color: 1, 1, 1, 1
                 md_bg_color: (.47, .43, .26, 1)
                 elevation: 3
-                on_release: root.go_to_password_page()
+                on_release: 
+                    root.go_to_password_page()
+                    root.submit_to_db()
 
 <PasswordPage>:
     canvas.before:
@@ -381,7 +397,6 @@
                 hint_text: "Choose Username"
                 icon_right: "account"
                 multiline: False
-                password: True
                 font_size: 24
                 size_hint_x: 0.6
 

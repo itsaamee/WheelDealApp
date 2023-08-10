@@ -58,6 +58,48 @@ class RegisterPage(ParentScreen):
         app.root.transition = SlideTransition(direction='left', duration= 0.25)
         app.root.current = 'password'
 
+    def submit_to_db(self):
+        # create db or connect to it
+        conn = sqlite3.connect("database.db")
+        
+        #create the cursor
+        cur = conn.cursor()
+
+        data = {
+            'first_name': self.ids.first.text,
+            'last_name': self.ids.last.text,
+            'email': self.ids.email.text,
+            'street': self.ids.street.text,
+            'house': self.ids.house.text,
+            'city': self.ids.city.text,
+            'state': self.ids.state.text,
+            'zip': self.ids.zip.text
+        }
+
+        # add a record to the database
+        cur.execute("INSERT INTO customer_info VALUES (:first_name, :last_name, :email, :street, :house, :city, :state, :zip)", data)
+
+        conn.commit()
+
+        conn.close()
+
+        # clear all the input fields
+        self.ids.first.text = "" 
+        self.ids.last.text = ""
+        self.ids.email.text= ""
+        self.ids.street.text= ""
+        self.ids.house.text= ""
+        self.ids.city.text= ""
+        self.ids.state.text= ""
+        self.ids.zip.text= ""
+
+    def same_as_shipping(self):
+        self.ids.billing_street.text = self.ids.street.text
+        self.ids.billing_house.text = self.ids.house.text
+        self.ids.billing_city.text = self.ids.city.text
+        self.ids.billing_state.text = self.ids.state.text
+        self.ids.billing_zip.text = self.ids.zip.text
+
 class PasswordPage(ParentScreen):
     def go_to_welcome_page(self):
         app = App.get_running_app()
@@ -66,6 +108,7 @@ class PasswordPage(ParentScreen):
     
     def account_creation_label(self):
         self.ids.success_label.text = "Account Created Successfully"
+
 
 class WelcomePage(ParentScreen):
 
@@ -120,8 +163,29 @@ class ShoppingCart(ParentScreen):
 
 
 class MyApp(MDApp):
-    
     def build(self):
+
+        # create db or connect to it
+        conn = sqlite3.connect("database.db")
+        
+        #create the cursor
+        cur = conn.cursor()
+
+        # create a table
+        cur.execute("""CREATE TABLE if not exists customer_info(
+            first_name text,
+            last_name text,
+            email text,
+            street text,
+            house_apt text,
+            city text,
+            state text,
+            zip integer)
+            """)
+        
+        conn.commit()
+
+        conn.close()
 
         sm = ScreenManager()
         sm.add_widget(HomePage(name = "home"))
@@ -137,7 +201,6 @@ class MyApp(MDApp):
 
         sm.current = 'home'
         return sm
-
 
 if __name__ == "__main__":
     MyApp().run()
