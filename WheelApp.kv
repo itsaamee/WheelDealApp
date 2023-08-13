@@ -129,12 +129,13 @@
         Rectangle: 
             pos: self.pos
             size: self.size
-        
+
+
     MDBoxLayout:
         orientation: "vertical"
         padding: 15
         spacing: 10
-        
+
         GridLayout:
             size: self.width, self.height
             cols: 1
@@ -287,6 +288,7 @@
                     font_size: 25
                     
                 MDCheckbox:
+                    id: shipping_checkbox
                     size_hint: None, None
                     size: "55dp", "55dp"
                     active: False
@@ -368,17 +370,40 @@
                     font_size: 25
                     size_hint_x: 0.7
 
-            MDRaisedButton:
-                pos_hint: {'center_x': 0.5}
-                size_hint: (0.7, 2)
-                text: "Submit"
-                font_size: 25
-                text_color: 1, 1, 1, 1
-                md_bg_color: (.47, .43, .26, 1)
-                elevation: 3
-                on_release: 
-                    root.go_to_password_page()
-                    root.submit_to_db()
+            MDBoxLayout:
+                orientation: 'horizontal'
+                padding: 5
+                spacing: 10
+                MDRaisedButton:
+                    id: reg_submit_button
+                    size_hint: (0.3, 1.4)
+                    text: "Submit"
+                    font_size: 25
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: (.47, .43, .26, 1)
+                    elevation: 3
+                    on_release: 
+                        root.required_fields()
+
+                MDRaisedButton:
+                    id: reg_proceed_button
+                    size_hint: (0.3, 1.4)
+                    text: "Proceed"
+                    font_size: 25
+                    text_color: 1, 1, 1, 1
+                    md_bg_color: (.47, .43, .26, 1)
+                    elevation: 3
+                    disabled: True
+                    on_release:
+                        root.submit_to_db()
+                        root.go_to_password_page()
+                        
+                
+            MDBoxLayout:  
+                orientation: "horizontal"  
+                MDLabel:
+                    id: reg_label
+                    text: ""
 
 <PasswordPage>:
     canvas.before:
@@ -399,6 +424,7 @@
 
         MDBoxLayout:
             MDTextField:
+                id: username
                 hint_text: "Choose Username"
                 icon_right: "account"
                 multiline: False
@@ -407,8 +433,10 @@
 
         MDBoxLayout:
             MDTextField:
+                id: password
                 hint_text: "Choose Password"
                 icon_right: "eye-off"
+                password: True
                 multiline: False
                 font_size: 24
                 size_hint_x: 0.6
@@ -416,6 +444,8 @@
         MDBoxLayout:
             orientation: "horizontal"
             MDTextField:
+                id: confirmed_password
+                password: True
                 hint_text: "Confirm Password"
                 multiline: False
                 icon_right: "eye-off"
@@ -428,6 +458,7 @@
             spacing: 20
 
             MDRaisedButton:
+                id: submit_button
                 text: "Submit"
                 size_hint_y: 1
                 size_hint_x: 0.6
@@ -437,9 +468,8 @@
                 elevation: 3
                 disabled: False
                 on_release: 
-                    root.account_creation_label(),
-                    proceed_button.disabled = False
-                    self.disabled= True
+                    root.match_the_password()
+                    
 
             MDRaisedButton:
                 text: "Proceed"

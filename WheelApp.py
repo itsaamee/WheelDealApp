@@ -7,6 +7,8 @@ from kivy.uix.button import Button
 from kivymd.app import MDApp
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.button import MDRaisedButton
+import bcrypt
+from kivymd.uix.dialog import MDDialog
 
 
 Builder.load_file('WheelApp.kv') 
@@ -126,6 +128,27 @@ class RegisterPage(ParentScreen):
         self.ids.billing_state.text = self.ids.state.text
         self.ids.billing_zip.text = self.ids.zip.text
 
+    def required_fields(self):
+        if (
+            self.ids.first.text == "" or
+            self.ids.last.text == "" or
+            self.ids.email.text == "" or
+            self.ids.street.text == "" or
+            self.ids.city.text == "" or
+            self.ids.state.text == "" or
+            self.ids.zip.text == "" or
+            self.ids.billing_street.text == "" or
+            self.ids.billing_city.text == "" or
+            self.ids.billing_state.text == "" or
+            self.ids.billing_zip.text == ""
+        ):
+            self.ids.reg_label.text = "Enter the Required Fields"
+        else:
+            self.ids.reg_proceed_button.disabled = False
+            self.ids.reg_submit_button.disabled = True
+            self.ids.reg_label.text = ""
+
+
 class PasswordPage(ParentScreen):
     def go_to_welcome_page(self):
         app = App.get_running_app()
@@ -134,6 +157,40 @@ class PasswordPage(ParentScreen):
     
     def account_creation_label(self):
         self.ids.success_label.text = "Account Created Successfully"
+    
+    def submit_creds_to_db(self):
+        conn = sqlite3.connect("database.db")
+        
+        cur = conn.cursor()
+
+        hashed_password = bcrypt.hashpw(self.ids.password.text.encode('utf-8'), bcrypt.gensalt())
+
+        data = {
+            'username': self.ids.username.text,
+            'password': hashed_password
+        }
+
+        cur.execute("""
+            INSERT INTO credentials (username, password) VALUES (:username, :password)
+            """, data)
+
+        conn.commit()
+        conn.close()
+
+        self.ids.username.text = ""
+        self.ids.password.text = ""
+
+    def match_the_password(self):
+        if self.ids.password.text == self.ids.confirmed_password.text:
+            self.ids.success_label.text = "account confirmed"
+            self.submit_creds_to_db()
+            self.ids.proceed_button.disabled = False
+            self.ids.submit_button.disabled = True
+        else:
+            self.ids.success_label.text = "passwords not a match. Try again."
+            self.ids.password.text = ""
+            self.ids.confirmed_password.text = ""
+            self.ids.proceed_button.disabled = True
 
 
 class WelcomePage(ParentScreen):
@@ -191,13 +248,13 @@ class ShoppingCart(ParentScreen):
 class MyApp(MDApp):
     def build(self):
 
-        # create db or connect to it
+        # connect to db
         conn = sqlite3.connect("database.db")
         
         #create the cursor
         cur = conn.cursor()
 
-        # create a table
+        # create tables
         cur.execute("""CREATE TABLE if not exists customer_info(
             first_name text,
             last_name text,
@@ -213,6 +270,11 @@ class MyApp(MDApp):
             billing_state text,
             billing_zip text)
             """)
+        
+        cur.execute("""CREATE TABLE if not exists credentials(
+            username text,
+            password text
+            )""")
         
         conn.commit()
 
