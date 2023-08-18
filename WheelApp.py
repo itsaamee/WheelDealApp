@@ -8,7 +8,6 @@ from kivymd.app import MDApp
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.button import MDRaisedButton
 import bcrypt
-from kivymd.uix.dialog import MDDialog
 
 
 Builder.load_file('WheelApp.kv') 
@@ -180,17 +179,36 @@ class PasswordPage(ParentScreen):
         self.ids.username.text = ""
         self.ids.password.text = ""
 
+    def required_fields_password(self):
+        if (
+            self.ids.password.text == "" or
+            self.ids.confirmed_password.text == "" or
+            self.ids.username.text == ""  
+        ):
+            self.ids.success_label.text = "Enter the Required Fields"
+        # else:
+           # self.ids.proceed_button.disabled = False
+            #self.ids.submit_button.disabled = True
+            #self.ids.success_label.text = ""
+    
     def match_the_password(self):
-        if self.ids.password.text == self.ids.confirmed_password.text:
-            self.ids.success_label.text = "account confirmed"
-            self.submit_creds_to_db()
-            self.ids.proceed_button.disabled = False
-            self.ids.submit_button.disabled = True
+        if self.ids.password.text != "" and self.ids.confirmed_password.text != "":
+            if self.ids.password.text == self.ids.confirmed_password.text:
+                self.ids.success_label.text = "account confirmed"
+                self.submit_creds_to_db()
+                self.ids.proceed_button.disabled = False
+                self.ids.submit_button.disabled = True
+            else:
+                self.ids.success_label.text = "passwords not a match. Try again."
+                self.ids.password.text = ""
+                self.ids.confirmed_password.text = ""
+                self.ids.proceed_button.disabled = True
         else:
-            self.ids.success_label.text = "passwords not a match. Try again."
-            self.ids.password.text = ""
-            self.ids.confirmed_password.text = ""
-            self.ids.proceed_button.disabled = True
+            self.ids.success_label.text = "please enter a password"
+
+        
+
+    
 
 
 class WelcomePage(ParentScreen):
