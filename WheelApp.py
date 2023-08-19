@@ -8,6 +8,7 @@ from kivymd.app import MDApp
 from kivymd.uix.menu import MDDropdownMenu
 from kivymd.uix.button import MDRaisedButton
 import bcrypt
+from kivymd.uix.pickers import MDDatePicker
 
 
 Builder.load_file('WheelApp.kv') 
@@ -192,20 +193,22 @@ class PasswordPage(ParentScreen):
             #self.ids.success_label.text = ""
     
     def match_the_password(self):
-        if self.ids.password.text != "" and self.ids.confirmed_password.text != "":
-            if self.ids.password.text == self.ids.confirmed_password.text:
-                self.ids.success_label.text = "account confirmed"
-                self.submit_creds_to_db()
-                self.ids.proceed_button.disabled = False
-                self.ids.submit_button.disabled = True
+        if self.ids.username.text != "":
+            if self.ids.password.text != "" and self.ids.confirmed_password.text != "":
+                if self.ids.password.text == self.ids.confirmed_password.text:
+                    self.ids.success_label.text = "account confirmed"
+                    self.submit_creds_to_db()
+                    self.ids.proceed_button.disabled = False
+                    self.ids.submit_button.disabled = True
+                else:
+                    self.ids.success_label.text = "passwords not a match. Try again."
+                    self.ids.password.text = ""
+                    self.ids.confirmed_password.text = ""
+                    self.ids.proceed_button.disabled = True
             else:
-                self.ids.success_label.text = "passwords not a match. Try again."
-                self.ids.password.text = ""
-                self.ids.confirmed_password.text = ""
-                self.ids.proceed_button.disabled = True
-        else:
-            self.ids.success_label.text = "please enter a password"
-
+                self.ids.success_label.text = "please enter a password"
+        else: 
+            self.ids.success_label.text = "please enter username"
         
 
     
@@ -256,7 +259,25 @@ class PreBuiltBikes(ParentScreen):
     pass
 
 class BikeLessons(ParentScreen):
-    pass
+    
+    def show_date_picker(self):
+        date_picker = MDDatePicker()
+        date_picker.bind(on_save=self.on_save)
+        date_picker.open()
+
+    def on_save(self, instance, value, date_range):
+        app = App.get_running_app()
+        shopping_cart_page = app.root.get_screen('cart') 
+        shopping_cart_page.ids.lessons_in_cart.text =f"Lesson on {str(value)}"
+        shopping_cart_page.ids.lesson_quantity.text ="   1"
+        shopping_cart_page.ids.lesson_price.text ="$40"
+
+    def go_to_cart_page(self):
+        app = App.get_running_app()
+        app.root.transition = SlideTransition(direction='left', duration= 0.25)
+        app.root.current = 'cart'
+
+    
 
 # RTM-004
 class ShoppingCart(ParentScreen):

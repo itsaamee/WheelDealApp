@@ -804,36 +804,58 @@
         Rectangle: 
             pos: self.pos
             size: self.size
-    # PageSpinner:
+    PageSpinner:
 
     MDBoxLayout:
         orientation: 'vertical'
-        padding: 10
-        spacing: 10
+        padding: 20
+        spacing: 20
         
         MDLabel:
-            text: "Lesson Page"
+            text: "Bike Lessons"
+            font_name: 'Roboto'
+            bold: True
             size_hint: (1, 0.1)
-            pos_hint: {'x': 0, 'top': 0.9}
-            font_size: 30
+            pos_hint: {'x': 0.25, 'top': 0.8}
+            font_size: 60
+
+        Image:
+            source: 'mountain_bike_pic.png' 
+            size_hint: (1, None)
+            allow_stretch: False  
+            keep_ratio: True  
+            height: self.parent.width * 0.7
 
         MDLabel:
-            text: 'Here at WheelDeal, we offer lessons for learning to ride \nyour new bike.  All lessons are held daily at 10:00 AM.  \nMake a date selection below to purchase a lesson'
-            font_size: 30
-            size_hint: (1, 0.4)
-            pos_hint: {'x': 0, 'top': 0.4}
+            text: 'Lessons are daily at 10:00 AM, 45 minutes long, and cost $40. Pick a date below to purchase a lesson.'
+            font_size: 35
+            size_hint: (1, 0.2)
+            pos_hint: {'x': 0.00, 'top': 0.4}
 
-        MDLabel: 
-            text: "DatePicker\nPlaceholder"
-            font_size: 32
 
-        MDRaisedButton:
-            elevation: 3
-            text: "Back"
-            font_size: 25
-            size_hint_y: None
-            pos_hint: {'x': 0, 'top': 0.1}
-            on_release: root.go_back()
+        MDBoxLayout:
+            orientation: "horizontal"
+            spacing: 10
+            padding: 10
+            
+            MDRaisedButton:
+                size_hint: (0.4, 0.2)
+                text: "Pick a date"
+                elevation: 3
+                font_size: 35
+                md_bg_color: (.47, .43, .26, 1)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_release: root.show_date_picker()
+
+            MDRaisedButton:
+                size_hint: (0.4, 0.2)
+                text: "Proceed to Cart"
+                elevation: 3
+                font_size: 35
+                md_bg_color: (.47, .43, .26, 1)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_release: root.go_to_cart_page()
+        
 
 <ShoppingCart>:
     canvas.before:
@@ -855,9 +877,78 @@
             allow_stretch: False  
             keep_ratio: True  
             height: self.parent.width * 0.7
+
+        MDGridLayout:
+            cols: 1
+            MDBoxLayout:
+                orientation: 'horizontal'
+
+                MDLabel:
+                    text: "  Your Cart\n_______________"
+                    font_size: 32
+                
+                MDLabel:
+                    text: '  Quantity      Price\n___________________'
+                    font_size: 32
+
+            MDBoxLayout:
+                orientation: "horizontal"
+
+                MDLabel:
+                    id: lessons_in_cart
+                    text: ""
+
+                MDLabel:
+                    text: ""
+
+                MDLabel: 
+                    id: lesson_quantity
+                    text: ""
+
+                MDLabel: 
+                    id: lesson_price
+                    text: ""
+
+            MDBoxLayout:
+                orientation: "horizontal"
+
+                MDLabel:
+                    text: ""
+
+                MDLabel: 
+
+            MDBoxLayout:
+                orientation: "horizontal"
+
+                MDLabel:
+                    text: ""
+
+                MDLabel: 
+
+            MDBoxLayout:
+                orientation: "horizontal"
+
+                MDLabel:
+                    text: ""
+
+                MDLabel: 
+
+            MDBoxLayout:
+                orientation: "horizontal"
+
+                MDLabel:
+                    text: ""
+
+                MDLabel: 
+                    text: ""
+                
+            
+
+                
+                    
+                
         
-        MDLabel: 
-            text: "Shopping Cart"
+        
 
 
         
